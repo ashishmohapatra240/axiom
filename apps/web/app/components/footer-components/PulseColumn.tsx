@@ -5,6 +5,7 @@ import { PiSlidersHorizontalFill } from "react-icons/pi";
 import { BiSolidZap } from "react-icons/bi";
 import Image from "next/image";
 import PairCard from "../PairCard";
+import PairCardSkeleton from "../PairCardSkeleton";
 import { PairData } from "../../hooks/useWebSocket";
 import {
   Tooltip,
@@ -215,13 +216,21 @@ const PulseColumn: React.FC<PulseColumnProps> = ({
           className="overflow-y-auto flex-1"
           style={{ maxHeight: "calc(100vh - 250px)" }}
         >
-          {displayPairs.map((pair, index) => (
-            <PairCard
-              key={`${pair.pair_address}-${index}`}
-              {...pair}
-              pairType={pairType}
-            />
-          ))}
+          {isConnected ? (
+            // Show shimmer skeletons when loading
+            [...Array(4)].map((_, index) => (
+              <PairCardSkeleton key={`skeleton-${index}`} />
+            ))
+          ) : (
+            // Show actual data when loaded
+            displayPairs.map((pair, index) => (
+              <PairCard
+                key={`${pair.pair_address}-${index}`}
+                {...pair}
+                pairType={pairType}
+              />
+            ))
+          )}
         </div>
       </div>
     </TooltipProvider>
