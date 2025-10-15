@@ -11,7 +11,7 @@ import { useWebSocket } from "../hooks/useWebSocket";
 type TabType = "newPairs" | "finalStretch" | "migrated";
 
 const Pulse = () => {
-  const { data, isLoading } = useWebSocket("ws://localhost:8080");
+  const { data, isLoading } = useWebSocket("wss://api.axiom.ashishmohapatra.in");
   const [activeTab, setActiveTab] = useState<TabType>("newPairs");
 
   return (
