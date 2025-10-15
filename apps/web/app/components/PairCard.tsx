@@ -54,7 +54,7 @@ export type PairCardProps = {
 };
 
 const fmtUSD = (n?: number) =>
-  n ? (n >= 1000 ? `$${(n / 1000).toFixed(2)}K` : `$${n}`) : "$0";
+  n ? (n >= 1000 ? `$${(n / 1000).toFixed(2)}K` : `$${n.toFixed(2)}`) : "$0";
 const fmtSOL = (n?: number) => (n ? n.toFixed(1) : "0");
 const pct = (n?: number) => (n ? `${(n > 1 ? n : n * 10).toFixed(0)}%` : "0%");
 const shortAddr = (a?: string) =>
@@ -288,7 +288,7 @@ const PairCard: React.FC<PairCardProps> = (props) => {
             </button>
           </div>
 
-          <div className="mt-0 md:mt-1.5 flex items-center gap-2 overflow-x-auto">
+          <div className="mt-0 md:mt-1.5 flex items-center gap-2 flex-wrap">
             <Pill>{timeAgo(open_trading)}</Pill>
             <SocialIcon href={website} icon={<FaGlobe />} title="Website" />
             <SocialIcon href={twitter} icon={<FaTwitter />} title="Twitter" />
@@ -355,7 +355,7 @@ const PairCard: React.FC<PairCardProps> = (props) => {
           </div>
 
           {/* Indicators */}
-          <div className="mt-2 md:mt-8 flex items-center gap-0.5 overflow-x-auto">
+          <div className="mt-2 md:mt-8 flex items-center gap-0.5 flex-wrap">
             <SimpleIndicator
               icon={<RiUserStarLine className="h-3 w-3" />}
               value={pct(dev_holds_percent)}
