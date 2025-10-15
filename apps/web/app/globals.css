@@ -88,3 +88,23 @@ body {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-pulse {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(
+    90deg,
+    rgba(16, 17, 20, 0.6) 0%,
+    rgba(34, 36, 45, 0.4) 50%,
+    rgba(16, 17, 20, 0.6) 100%
+  );
+  background-size: 1000px 100%;
+}
