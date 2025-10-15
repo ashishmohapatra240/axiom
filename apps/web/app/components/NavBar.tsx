@@ -39,7 +39,7 @@ export default function NavBar() {
         <div className="flex items-center gap-2 sm:gap-4 flex-1 min-w-0">
           <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
             <Image src="/logo.svg" alt="Axiom" width={24} height={24} className="w-5 h-5 sm:w-6 sm:h-6" />
-            <Image src="/logo-text.svg" alt="Axiom" width={80} height={80} className="hidden xl:block w-16 sm:w-20 lg:w-24 h-auto" />
+            <Image src="/logo-text.svg" alt="Axiom" width={80} height={80} className="hidden 3xl:block w-16 sm:w-20 lg:w-24 h-auto" />
           </div>
 
           <div className="hidden xl:flex items-center mx-2 2xl:mx-4">
