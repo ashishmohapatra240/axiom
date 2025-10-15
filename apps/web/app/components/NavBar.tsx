@@ -61,36 +61,52 @@ export default function NavBar() {
             <input
               type="text"
               placeholder="Search by token or CA..."
+              aria-label="Search cryptocurrency tokens"
               className="bg-transparent hover:bg-[#101217] text-gray-400 placeholder-gray-500 pl-10 pr-4 py-2 rounded-full text-[12px] border border-gray-800 w-40 lg:w-52 xl:w-64 font-sans focus:outline-none"
             />
-            <kbd className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-xs border border-gray-700 px-1.5 py-0.5 rounded-full hidden lg:block">
+            <kbd className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-xs border border-gray-700 px-1.5 py-0.5 rounded-full hidden lg:block" aria-label="Keyboard shortcut">
               /
             </kbd>
           </div>
 
-          <button className="md:hidden bg-[#22242D] rounded-full p-1.5">
+          <button 
+            className="md:hidden bg-[#22242D] rounded-full p-1.5"
+            aria-label="Search"
+          >
             <FiSearch className="h-4 w-4 sm:h-5 sm:w-5" />
           </button>
 
-          <button className="hidden sm:block bg-[#486FFF] hover:bg-[#6683FF] text-black font-bold px-2.5 sm:px-3.5 py-1.5 rounded-full text-[12px] sm:text-[14px] transition-colors cursor-pointer font-axiom font-sans whitespace-nowrap">
+          <button 
+            className="hidden sm:block bg-[#486FFF] hover:bg-[#6683FF] text-black font-bold px-2.5 sm:px-3.5 py-1.5 rounded-full text-[12px] sm:text-[14px] transition-colors cursor-pointer font-axiom font-sans whitespace-nowrap"
+            aria-label="Deposit funds"
+          >
             Deposit
           </button>
 
-          <button className="hidden lg:block bg-[#22242D] rounded-full p-1.5">
+          <button 
+            className="hidden lg:block bg-[#22242D] rounded-full p-1.5"
+            aria-label="Favorites"
+          >
             <IoIosStarOutline className="h-5 w-5" />
           </button>
 
-          <button className="hidden lg:block bg-[#22242D] rounded-full p-1.5">
+          <button 
+            className="hidden lg:block bg-[#22242D] rounded-full p-1.5"
+            aria-label="Notifications"
+          >
             <RiNotificationLine className="h-5 w-5" />
           </button>
 
           <div className="flex items-center bg-[#22242D] rounded-full py-1">
             <div className="flex items-center gap-1.5 sm:gap-3 border-l border-gray-800 pl-2 sm:pl-4">
-              <button className="flex items-center gap-1 sm:gap-2">
+              <button 
+                className="flex items-center gap-1 sm:gap-2"
+                aria-label="Solana wallet balance: 0"
+              >
                 <LuWallet className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                 <Image
                   src="https://axiom.trade/images/sol-fill.svg"
-                  alt="Solana"
+                  alt="Solana token"
                   width={16}
                   height={16}
                   className="w-3.5 h-3.5 sm:w-4 sm:h-4"
@@ -98,10 +114,13 @@ export default function NavBar() {
                 <span className="text-[12px] sm:text-[14px]">0</span>
               </button>
 
-              <button className="hidden sm:flex items-center gap-2">
+              <button 
+                className="hidden sm:flex items-center gap-2"
+                aria-label="USDC wallet balance: 0"
+              >
                 <Image
                   src="https://axiom.trade/images/usdc-perps.svg"
-                  alt="USDC"
+                  alt="USDC token"
                   width={16}
                   height={16}
                   className="w-3.5 h-3.5 sm:w-4 sm:h-4"
@@ -112,13 +131,18 @@ export default function NavBar() {
             </div>
           </div>
 
-          <button className="bg-[#22242D] rounded-full p-1.5">
+          <button 
+            className="bg-[#22242D] rounded-full p-1.5"
+            aria-label="User settings"
+          >
             <RiUserSettingsLine className="h-4 w-4 sm:h-5 sm:w-5" />
           </button>
 
           <button 
             className="xl:hidden bg-[#22242D] rounded-full p-1.5"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? (
               <FiX className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -130,7 +154,11 @@ export default function NavBar() {
       </nav>
 
       {mobileMenuOpen && (
-        <div className="xl:hidden sticky top-[52px] sm:top-[64px] z-40 border-b border-gray-900 bg-[#06070B] overflow-y-auto max-h-[60vh]">
+        <div 
+          className="xl:hidden sticky top-[52px] sm:top-[64px] z-40 border-b border-gray-900 bg-[#06070B] overflow-y-auto max-h-[60vh]"
+          role="navigation"
+          aria-label="Mobile navigation menu"
+        >
           <div className="flex flex-col p-4 gap-1">
             {navigationItems.map((item, index) => (
               <Link
@@ -138,6 +166,7 @@ export default function NavBar() {
                 href={item.href}
                 className={`${getNavItemClass(pathname === item.href)} w-full justify-start`}
                 onClick={() => setMobileMenuOpen(false)}
+                aria-current={pathname === item.href ? "page" : undefined}
               >
                 {item.label}
               </Link>
